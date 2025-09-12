@@ -56,7 +56,12 @@ public class UsuarioDAO {
         }
 
     }
+
+    public boolean logar(String usuario, String senha) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
+
 
  
     

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package view:
 
 import controller.UsuarioDAO;
 import javax.swing.JOptionPane;
@@ -10,7 +10,9 @@ import jdbc.ModuloConexao;
 import java.sql.Connection;
 import java.sql.*;
 
-
+    private void status() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 /**
  *
  * @author GERAL
@@ -179,23 +181,31 @@ public class TelaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLoginActionPerformed
-        try {
-            String usuario, senha;
-
-            usuario = jTxtUsuario.getText();
-            senha = jTxtSenha.getText();
+     
+           
+            String senha = jTxt.valueOf (jTxtSenha.getPassword());
+            String usuario = jTxtUsuario.getText();
 
             UsuarioDAO  dao = new UsuarioDAO();
 
-            dao.efetuaLogin(usuario, senha);
+            dao.logar(usuario, senha);
 
-            this.dispose();
+            if (dao.logar (usuario, senha)){
+                JOptionPane.showMessageDialog(null,"Acesso ao sistema");
+}else if (!senha.equals("Java")){
+    JOptionPane.showMessageDialog(null,"Senha inválida, verifique a senha!");
+      jTxtSenha.setText("");
+       jTxtSenha.requestFocus();
+}else if (!dao.logar (usuario, senha)){
+    JOptionPane.showMessageDialog(null,"usuario invalido, verifique o usuario!");
+    jTxtUsuario.setText(null);
+    jTxtUsuario.requestFocus();
+}else{
+    JOptionPane.showMessageDialog(null,"usuario e senha invalido!");
+    jTxtUsuario.requestFocus();
+            }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "erro");
-            jTxtSenha.setText("");
-            jTxtUsuario.setText(null);
-            jTxtUsuario.requestFocus();
+      
         }
     }//GEN-LAST:event_jBtnLoginActionPerformed
 
@@ -236,4 +246,5 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JPasswordField jTxtSenha;
     private javax.swing.JTextField jTxtUsuario;
     // End of variables declaration//GEN-END:variables
-}
+
+

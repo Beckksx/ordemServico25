@@ -45,6 +45,9 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         Pesquisar = new javax.swing.JButton();
         SenhaUser = new javax.swing.JPasswordField();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Usuários");
 
         jLabel1.setText("* Id");

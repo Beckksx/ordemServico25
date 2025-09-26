@@ -4,6 +4,10 @@
  */
 package view;
 
+import controller.UsuarioDAO;
+import javax.swing.JOptionPane;
+import model.Usuario;
+
 /**
  *
  * @author GERAL
@@ -45,6 +49,9 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         Pesquisar = new javax.swing.JButton();
         SenhaUser = new javax.swing.JPasswordField();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Usuários");
 
         jLabel1.setText("* Id");
@@ -61,7 +68,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
 
         jLabel7.setText("* Perfil");
 
-        PerfilTypes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PerfilTypes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Usuário", " " }));
         PerfilTypes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PerfilTypesActionPerformed(evt);
@@ -70,7 +77,12 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
 
         buttonAlterarSenha.setText("Alterar a senha");
 
-        ButtonCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/create.png"))); // NOI18N
+        ButtonCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/create.png"))); // NOI18N
+        ButtonCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCreateActionPerformed(evt);
+            }
+        });
 
         ButtonUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/update.png"))); // NOI18N
 
@@ -141,11 +153,12 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(NomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FoneUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6)
-                    .addComponent(LoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(FoneUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(LoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
@@ -172,6 +185,23 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
     private void PerfilTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilTypesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PerfilTypesActionPerformed
+
+    private void ButtonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCreateActionPerformed
+        Usuario obj = new Usuario();
+        obj.setUsuario(IdUsuario.getText());
+        obj.setNome(NomeUsuario.getText());
+        obj.setFone(FoneUsuario.getText());
+        obj.setLogin(LoginUser.getText());
+        obj.setSenha(SenhaUser.getText());
+        obj.setPerfil(PerfilTypes.getSelectedItem().toString());
+        if ((IdUsuario.getText().isEmpty()) || (NomeUsuario.getText().isEmpty()) || (LoginUser.getText().isEmpty()) || (SenhaUser.getPassword().length == 0) || PerfilTypes.getSelectedItem().equals(" ")){
+            JOptionPane.showMessageDialog(null, "Preencha tods os campos obrigatórios");
+            
+        }else{
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.adicionarUsuario(obj);
+        }
+    }//GEN-LAST:event_ButtonCreateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

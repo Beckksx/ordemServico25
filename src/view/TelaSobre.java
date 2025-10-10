@@ -39,13 +39,13 @@ public class TelaSobre extends javax.swing.JFrame {
 
         jLabel1.setText("Sistema para gestão de serviços - Ver 1.0");
 
-        jLabel2.setText("@author Professor Cleber Feitosa");
+        jLabel2.setText("@author Rebeca Xavier Pinto Monteiro - 2024110310420021");
 
-        jLabel3.setText("cleber.feitosa@ifmt.edu.br");
+        jLabel3.setText("x.monteiro@estudante.ifmt.edu.br");
 
         jLabel4.setText("Sob a licença MIT");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/mit.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/mit.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -59,21 +59,21 @@ public class TelaSobre extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(40, 40, 40))
+                .addGap(118, 118, 118))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jLabel4))
+                        .addComponent(jLabel4)
+                        .addGap(141, 141, 141)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3))))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,11 +84,15 @@ public class TelaSobre extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(32, 32, 32)
                 .addComponent(jLabel3)
-                .addGap(60, 60, 60)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel4)
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

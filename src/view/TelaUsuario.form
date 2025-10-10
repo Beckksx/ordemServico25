@@ -51,9 +51,9 @@
                           <Component id="FoneUsuario" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="ButtonCreate" min="-2" pref="94" max="-2" attributes="0"/>
+                              <Component id="btnUsuCreate" min="-2" pref="94" max="-2" attributes="0"/>
                               <EmptySpace pref="98" max="32767" attributes="0"/>
-                              <Component id="ButtonUpdate" min="-2" pref="86" max="-2" attributes="0"/>
+                              <Component id="btnUsuUpdate" min="-2" pref="86" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -74,7 +74,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="ButtonDelete" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="btnUsuDetele" min="-2" pref="84" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -126,9 +126,9 @@
               <Component id="buttonAlterarSenha" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="57" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ButtonUpdate" min="-2" pref="99" max="-2" attributes="0"/>
-                  <Component id="ButtonCreate" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                  <Component id="ButtonDelete" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Component id="btnUsuUpdate" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Component id="btnUsuCreate" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                  <Component id="btnUsuDetele" min="-2" pref="99" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
@@ -172,6 +172,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="IdUsuario">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IdUsuarioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="NomeUsuario">
     </Component>
@@ -201,31 +204,42 @@
         <Property name="text" type="java.lang.String" value="Alterar a senha"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="ButtonCreate">
+    <Component class="javax.swing.JButton" name="btnUsuCreate">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icones/create.png"/>
+          <Image iconType="3" name="/icons/create.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUsuCreateActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="ButtonUpdate">
+    <Component class="javax.swing.JButton" name="btnUsuUpdate">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icones/update.png"/>
+          <Image iconType="3" name="/icons/update.png"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUsuUpdateActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="ButtonDelete">
+    <Component class="javax.swing.JButton" name="btnUsuDetele">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icones/delete.png"/>
+          <Image iconType="3" name="/icons/delete.png"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Pesquisar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pesquisar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PesquisarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="SenhaUser">
     </Component>

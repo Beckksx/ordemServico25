@@ -5,7 +5,7 @@
 package jdbc;
 
 import java.sql.DriverManager;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 import java.sql.Connection;
 /**
  *
@@ -31,7 +31,7 @@ public class ModuloConexao {
             return conexao;
         } catch (Exception e) {
             //a lihna abaixo server de apoio para esclarecer o erro
-            JOptionPane.showMessageDialog(null, "Opss, algo deu errado: " + e);
+          //  JOptionPane.showMessageDialog(null, "Opss, algo deu errado: " + e);
             return null;
         }
 }

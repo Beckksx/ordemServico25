@@ -4,6 +4,10 @@
  */
 package view;
 
+import controller.UsuarioDAO;
+import javax.swing.JOptionPane;
+import model.Usuario;
+
 /**
  *
  * @author GERAL
@@ -39,9 +43,9 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         FoneUsuario = new javax.swing.JTextField();
         PerfilTypes = new javax.swing.JComboBox<>();
         buttonAlterarSenha = new javax.swing.JCheckBox();
-        ButtonCreate = new javax.swing.JButton();
-        ButtonUpdate = new javax.swing.JButton();
-        ButtonDelete = new javax.swing.JButton();
+        btnUsuCreate = new javax.swing.JButton();
+        btnUsuUpdate = new javax.swing.JButton();
+        btnUsuDetele = new javax.swing.JButton();
         Pesquisar = new javax.swing.JButton();
         SenhaUser = new javax.swing.JPasswordField();
 
@@ -64,6 +68,12 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
 
         jLabel7.setText("* Perfil");
 
+        IdUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IdUsuarioActionPerformed(evt);
+            }
+        });
+
         PerfilTypes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Usuário", " " }));
         PerfilTypes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,13 +83,30 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
 
         buttonAlterarSenha.setText("Alterar a senha");
 
-        ButtonCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/create.png"))); // NOI18N
+        btnUsuCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/create.png"))); // NOI18N
+        btnUsuCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuCreateActionPerformed(evt);
+            }
+        });
 
-        ButtonUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/update.png"))); // NOI18N
+        btnUsuUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update.png"))); // NOI18N
+        btnUsuUpdate.setEnabled(false);
+        btnUsuUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuUpdateActionPerformed(evt);
+            }
+        });
 
-        ButtonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/delete.png"))); // NOI18N
+        btnUsuDetele.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete.png"))); // NOI18N
+        btnUsuDetele.setEnabled(false);
 
         Pesquisar.setText("Pesquisar");
+        Pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,9 +136,9 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                             .addComponent(FoneUsuario, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
-                                .addComponent(ButtonCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnUsuCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                                .addComponent(ButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnUsuUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -126,7 +153,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                                         .addComponent(PerfilTypes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnUsuDetele, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(120, 120, 120)))))
                 .addGap(26, 26, 26))
         );
@@ -164,9 +191,9 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
                 .addComponent(buttonAlterarSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnUsuUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUsuCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUsuDetele, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
@@ -177,11 +204,70 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PerfilTypesActionPerformed
 
+    private void btnUsuCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuCreateActionPerformed
+        Usuario obj = new Usuario();
+        obj.setUsuario(IdUsuario.getText());
+        obj.setNome(NomeUsuario.getText());
+        obj.setFone(FoneUsuario.getText());
+        obj.setLogin(LoginUser.getText());
+        obj.setSenha(SenhaUser.getText());
+        obj.setPerfil(PerfilTypes.getSelectedItem().toString());
+        if ((IdUsuario.getText().isEmpty()) || (NomeUsuario.getText().isEmpty()) || (LoginUser.getText().isEmpty()) || (SenhaUser.getPassword().length == 0) || PerfilTypes.getSelectedItem().equals(" ")){
+            JOptionPane.showMessageDialog(null, "Preencha tods os campos obrigatórios");
+            
+        }else{
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.adicionarUsuario(obj);
+        }
+    }//GEN-LAST:event_btnUsuCreateActionPerformed
+
+    private void PesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarActionPerformed
+        if(IdUsuario.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Informe o Id do usuario");
+            IdUsuario.requestFocus();
+        }else{
+            UsuarioDAO dao = new UsuarioDAO();
+            Usuario usuario = new Usuario();
+            usuario = dao.buscarUsuario(Integer.parseInt(IdUsuario.getText()));
+            NomeUsuario.setText(usuario.getUsuario());
+            LoginUser.setText(usuario.getLogin());
+            SenhaUser.setText(usuario.getSenha());
+            FoneUsuario.setText(usuario.getFone());
+            PerfilTypes.setSelectedItem(usuario.getPerfil());
+            
+            
+        
+        btnUsuCreate.setEnabled(false);
+        btnUsuUpdate.setEnabled(true);
+        btnUsuUpdate.setEnabled(true);
+        }
+
+        
+    }//GEN-LAST:event_PesquisarActionPerformed
+
+    private void IdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IdUsuarioActionPerformed
+
+    private void btnUsuUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuUpdateActionPerformed
+            Usuario obj = new Usuario();
+        obj.setUsuario(IdUsuario.getText());
+        obj.setNome(NomeUsuario.getText());
+        obj.setFone(FoneUsuario.getText());
+        obj.setLogin(LoginUser.getText());
+        obj.setSenha(SenhaUser.getText());
+        obj.setPerfil(PerfilTypes.getSelectedItem().toString());
+        if ((IdUsuario.getText().isEmpty()) || (NomeUsuario.getText().isEmpty()) || (LoginUser.getText().isEmpty()) || (SenhaUser.getPassword().length == 0) || PerfilTypes.getSelectedItem().equals(" ")){
+            JOptionPane.showMessageDialog(null, "Preencha tods os campos obrigatórios");
+            
+        }else{
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.alterarUsuario(obj);
+        }
+    }//GEN-LAST:event_btnUsuUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonCreate;
-    private javax.swing.JButton ButtonDelete;
-    private javax.swing.JButton ButtonUpdate;
     private javax.swing.JTextField FoneUsuario;
     private javax.swing.JTextField IdUsuario;
     private javax.swing.JTextField LoginUser;
@@ -189,6 +275,9 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> PerfilTypes;
     private javax.swing.JButton Pesquisar;
     private javax.swing.JPasswordField SenhaUser;
+    private javax.swing.JButton btnUsuCreate;
+    private javax.swing.JButton btnUsuDetele;
+    private javax.swing.JButton btnUsuUpdate;
     private javax.swing.JCheckBox buttonAlterarSenha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

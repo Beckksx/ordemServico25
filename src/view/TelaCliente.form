@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
@@ -122,10 +122,8 @@
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jButton5" pref="116" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jButton4" alignment="0" pref="116" max="32767" attributes="0"/>
-                      <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jButton4" alignment="0" pref="116" max="32767" attributes="0"/>
+                  <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="112" max="32767" attributes="0"/>
           </Group>
@@ -248,7 +246,7 @@
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icones/create.png"/>
+          <Image iconType="3" name="/icons/create.png"/>
         </Property>
       </Properties>
       <Events>
@@ -258,7 +256,7 @@
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icones/update.png"/>
+          <Image iconType="3" name="/icons/update.png"/>
         </Property>
       </Properties>
       <Events>
@@ -268,7 +266,7 @@
     <Component class="javax.swing.JButton" name="jButton5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/icones/delete.png"/>
+          <Image iconType="3" name="/icons/delete.png"/>
         </Property>
       </Properties>
     </Component>

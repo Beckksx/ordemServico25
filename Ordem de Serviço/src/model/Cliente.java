@@ -8,6 +8,7 @@ package model;
  *
  * @author GERAL
  */
+
 public class Cliente {
     private int id;
     private String nome;
@@ -18,6 +19,7 @@ public class Cliente {
     public Cliente(){
         
     };
+    
 
     public Cliente(String nome, String endereco, String fone, String email) {
         this.nome = nome;

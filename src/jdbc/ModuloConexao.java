@@ -1,15 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package jdbc;
 
-import java.sql.DriverManager;
-//import javax.swing.JOptionPane;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
+
+
 /**
  *
- * @author GERAL
+ * @author clebe
  */
 public class ModuloConexao {
     //criando um método ressponável por estabelecer uma conexão com o banco
@@ -24,15 +25,32 @@ public class ModuloConexao {
         String user = "root";
         String senha = "root";
         //estabelecer a conexão com o banco
-        try { 
+        try {
             Class.forName(driver);
-            conexao = DriverManager.getConnection(url, user, senha);
-            //JOptionPane.showMessageDialog(null, "Conectado com sucesso!!");
+           conexao = DriverManager.getConnection(url, user, senha);
+//            JOptionPane.showMessageDialog(null,"Conectado com Sucesso!!!");
+//            
+//            System.out.println(conexao);
             return conexao;
+            
         } catch (Exception e) {
             //a lihna abaixo server de apoio para esclarecer o erro
-          //  JOptionPane.showMessageDialog(null, "Opss, algo deu errado: " + e);
+//            JOptionPane.showMessageDialog(null,"OPS!!! - Algo de errado aconteceu!!"+e);
+//            System.out.println(e);
             return null;
         }
-}
+
+    }
+
+    public static java.sql.Connection desconectar() {
+        java.sql.Connection conexao = null;
+        try {
+            conexao.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        return conexao;
+    }
+
 }

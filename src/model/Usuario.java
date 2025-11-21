@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author GERAL
+ * @author clebe
  */
 public class Usuario {
     private int idUser;
@@ -15,10 +15,11 @@ public class Usuario {
     private String login;
     private String senha;
     private String perfil;
-     
-      public Usuario(){
+
+    public Usuario() {
+        
     }
-      
+
     public Usuario(int idUser, String usuario, String fone, String login, String senha, String perfil) {
         this.idUser = idUser;
         this.usuario = usuario;
@@ -75,15 +76,13 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public void setNome(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void setIdUsuario(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
- 
+    
+    
+    
+    
+    
+    
+    
     
 }
